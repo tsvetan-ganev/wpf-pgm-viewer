@@ -33,6 +33,11 @@ namespace PGMViewer.Common
                     // but it may start with a comment
                     if (pgm.MagicNumber == null)
                     {
+                        if (currentLine.Trim() != "P2")
+                        {
+                            throw new InvalidPGMFormatException("Currently only the P2 (ASCII PGM) format is supported.");
+                        }
+
                         pgm.MagicNumber = currentLine;
                         continue;
                     }
