@@ -7,7 +7,7 @@ using Microsoft.Win32;
 using PGMViewer.Common;
 using PGMViewer.Models;
 
-namespace PGMViewer
+namespace PGMViewer.UI
 {
     public partial class MainWindow : Window
     {
@@ -95,6 +95,23 @@ namespace PGMViewer
                     encoder.Frames.Add(BitmapFrame.Create(_CreateBitmapFromPGM(_currentlyOpenedPGM)));
                     encoder.Save(fileStream);
                 }
+            }
+        }
+
+        private void onAddBorder_Click(object sender, RoutedEventArgs e)
+        {
+            var addBorderDialog = new AddBorderDialog();
+            if (addBorderDialog.ShowDialog() == true)
+            {
+                MessageBox.Show(addBorderDialog.BorderSettings.GreyLevel + " " + addBorderDialog.BorderSettings.Width);
+                _currentlyOpenedPGM.PixelData = BorderAdder.AddBorder(
+                    _currentlyOpenedPGM,
+                    addBorderDialog.BorderSettings.Width,
+                    addBorderDialog.BorderSettings.GreyLevel
+                );
+                renderedImage.Source = null;
+                renderedImage.Source = _CreateBitmapFromPGM(_currentlyOpenedPGM);
+                renderedImage.InvalidateVisual();
             }
         }
 

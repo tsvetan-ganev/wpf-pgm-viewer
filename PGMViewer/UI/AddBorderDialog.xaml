@@ -1,0 +1,28 @@
+﻿<Window x:Class="PGMViewer.UI.AddBorderDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PGMViewer.UI"
+        mc:Ignorable="d"
+        Title="Add border" Height="300" Width="300">
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="{Binding ElementName=borderWidthSlider, Path=Value}"/>
+            <Slider
+                Name="borderWidthSlider"
+                Value="0" Maximum="255"
+                IsSnapToTickEnabled="True"
+            />
+
+            <TextBlock Text="{Binding ElementName=greyLevelSlider, Path=Value}"/>
+            <Slider 
+                Name="greyLevelSlider" 
+                Value="0" Maximum="255" 
+                IsSnapToTickEnabled="True"
+            />
+
+            <Button Click="ApplyButton_Click">Apply</Button>
+        </StackPanel>
+    </Grid>
+</Window>

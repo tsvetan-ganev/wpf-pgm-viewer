@@ -1,11 +1,11 @@
-﻿<Window x:Class="PGMViewer.MainWindow"
+﻿<Window x:Class="PGMViewer.UI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PGMViewer"
+        xmlns:local="clr-namespace:PGMViewer.UI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="PGM Viewer" Height="350" Width="525">
     <Grid>
         <DockPanel>
             <Menu Name="menubar" DockPanel.Dock="Top">
@@ -27,8 +27,7 @@
                     </MenuItem>
                 </MenuItem>
                 <MenuItem Header="_Effects">
-                    <MenuItem Name="borderMenuItem" Header="Add _border">
-                    </MenuItem>
+                    <MenuItem Name="borderMenuItem" Header="Add _border" Click="onAddBorder_Click"></MenuItem>
                 </MenuItem>
             </Menu>
             <StackPanel>
