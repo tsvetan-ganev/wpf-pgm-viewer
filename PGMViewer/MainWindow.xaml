@@ -26,6 +26,10 @@
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
+                <MenuItem Header="_Effects">
+                    <MenuItem Name="borderMenuItem" Header="Add _border">
+                    </MenuItem>
+                </MenuItem>
             </Menu>
             <StackPanel>
                 <Image Name="renderedImage"></Image>
