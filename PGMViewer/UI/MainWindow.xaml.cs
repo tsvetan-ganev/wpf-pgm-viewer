@@ -104,7 +104,7 @@ namespace PGMViewer.UI
             if (addBorderDialog.ShowDialog() == true)
             {
                 MessageBox.Show(addBorderDialog.BorderSettings.GreyLevel + " " + addBorderDialog.BorderSettings.Width);
-                _currentlyOpenedPGM.PixelData = BorderAdder.AddBorder(
+                _currentlyOpenedPGM.PixelData = BorderPainter.AddBorder(
                     _currentlyOpenedPGM,
                     addBorderDialog.BorderSettings.Width,
                     addBorderDialog.BorderSettings.GreyLevel
@@ -133,6 +133,7 @@ namespace PGMViewer.UI
         {
             this.saveMenuItem.IsEnabled = areEnabled;
             this.closeMenuItem.IsEnabled = areEnabled;
+            this.borderMenuItem.IsEnabled = areEnabled;
         }
     }
 }

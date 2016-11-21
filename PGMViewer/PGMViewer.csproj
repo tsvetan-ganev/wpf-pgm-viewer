@@ -63,7 +63,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Common\BorderAdder.cs" />
+    <Compile Include="Common\BorderPainter.cs" />
     <Compile Include="Models\BorderSettings.cs" />
     <Compile Include="UI\AddBorderDialog.xaml.cs">
       <DependentUpon>AddBorderDialog.xaml</DependentUpon>
