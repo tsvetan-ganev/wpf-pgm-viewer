@@ -8,18 +8,16 @@
         Title="Add border" Height="300" Width="300">
     <Grid>
         <StackPanel>
-            <TextBlock Text="{Binding ElementName=borderWidthSlider, Path=Value}"/>
-            <Slider
-                Name="borderWidthSlider"
-                Value="0" Maximum="255"
-                IsSnapToTickEnabled="True"
+            <TextBlock Text="{Binding ElementName=borderWidthSlider, Path=Value, StringFormat=Border width: {0} px}" />
+            <Slider Name="borderWidthSlider"
+                    Value="0" Maximum="255"
+                    IsSnapToTickEnabled="True"
             />
 
-            <TextBlock Text="{Binding ElementName=greyLevelSlider, Path=Value}"/>
-            <Slider 
-                Name="greyLevelSlider" 
-                Value="0" Maximum="255" 
-                IsSnapToTickEnabled="True"
+            <TextBlock Text="{Binding ElementName=greyLevelSlider, Path=Value, StringFormat=Grey level: {0}}" />
+            <Slider Name="greyLevelSlider"
+                    Value="0" Maximum="255"
+                    IsSnapToTickEnabled="True"
             />
 
             <Button Click="ApplyButton_Click">Apply</Button>

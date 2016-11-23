@@ -103,7 +103,6 @@ namespace PGMViewer.UI
             var addBorderDialog = new AddBorderDialog();
             if (addBorderDialog.ShowDialog() == true)
             {
-                MessageBox.Show(addBorderDialog.BorderSettings.GreyLevel + " " + addBorderDialog.BorderSettings.Width);
                 _currentlyOpenedPGM.PixelData = BorderPainter.AddBorder(
                     _currentlyOpenedPGM,
                     addBorderDialog.BorderSettings.Width,
