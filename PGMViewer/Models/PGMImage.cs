@@ -1,7 +1,12 @@
-﻿namespace PGMViewer.Models
+﻿using System.Windows.Media;
+using System.Windows.Media.Imaging;
+
+namespace PGMViewer.Models
 {
     public class PGMImage
     {
+        private const int DPI = 96;
+
         private uint _maxGrayValue;
 
         public string MagicNumber { get; set; }
@@ -34,6 +39,20 @@
                     && this.MaxGrayValue > 0 
                     && !string.IsNullOrWhiteSpace(this.MagicNumber);
             }
+        }
+
+        public BitmapSource ToBitmapSource()
+        {
+            return BitmapSource.Create(
+                pixelWidth: (int) this.Width,
+                pixelHeight: (int) this.Height,
+                dpiX: DPI,
+                dpiY: DPI,
+                pixelFormat: PixelFormats.Gray8,
+                palette: null,
+                pixels: this.PixelData,
+                stride: (int) this.Width
+            );
         }
     }
 }

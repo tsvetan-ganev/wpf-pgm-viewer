@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Windows;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Microsoft.Win32;
 using PGMViewer.Common;
@@ -12,7 +11,6 @@ namespace PGMViewer.UI
     public partial class MainWindow : Window
     {
         private const string DEFAULT_TITLE = "PGM Viewer";
-        private const int DPI = 96;
 
         private PGMImage _currentlyOpenedPGM;
 
@@ -40,8 +38,7 @@ namespace PGMViewer.UI
                 try
                 {
                     _currentlyOpenedPGM = PGMParser.Parse(openFileDialog.FileName);
-                    var source = _CreateBitmapFromPGM(_currentlyOpenedPGM);
-                    renderedImage.Source = source;
+                    renderedImage.Source = _currentlyOpenedPGM.ToBitmapSource();
                     _UpdateMenuItemsClickableStatus(areEnabled: true);
                 }
                 catch (InvalidPGMFormatException invalidPgmException)
@@ -92,7 +89,7 @@ namespace PGMViewer.UI
                         encoder = new BmpBitmapEncoder();
                     }
 
-                    encoder.Frames.Add(BitmapFrame.Create(_CreateBitmapFromPGM(_currentlyOpenedPGM)));
+                    encoder.Frames.Add(BitmapFrame.Create(_currentlyOpenedPGM.ToBitmapSource()));
                     encoder.Save(fileStream);
                 }
             }
@@ -108,24 +105,11 @@ namespace PGMViewer.UI
                     addBorderDialog.BorderSettings.Width,
                     addBorderDialog.BorderSettings.GreyLevel
                 );
+
                 renderedImage.Source = null;
-                renderedImage.Source = _CreateBitmapFromPGM(_currentlyOpenedPGM);
+                renderedImage.Source = _currentlyOpenedPGM.ToBitmapSource();
                 renderedImage.InvalidateVisual();
             }
-        }
-
-        private BitmapSource _CreateBitmapFromPGM(PGMImage img)
-        {
-            return BitmapSource.Create(
-                pixelWidth: (int)img.Width,
-                pixelHeight: (int)img.Height,
-                dpiX: DPI,
-                dpiY: DPI,
-                pixelFormat: PixelFormats.Gray8,
-                palette: null,
-                pixels: img.PixelData,
-                stride: (int)img.Width
-            );
         }
 
         private void _UpdateMenuItemsClickableStatus(bool areEnabled)
