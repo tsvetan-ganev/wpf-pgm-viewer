@@ -5,7 +5,8 @@ namespace PGMViewer.Models
 {
     public class PGMImage
     {
-        private const int DPI = 96;
+        private const byte DPI = 96;
+        private const double ACTUAL_MAX_GREY_LEVEL = 255.0d;
 
         private uint _maxGrayValue;
 
@@ -29,6 +30,14 @@ namespace PGMViewer.Models
         }
 
         public byte[] PixelData { get; set; }
+
+        public double GreyLevelScale
+        {
+            get
+            {
+                return this.MaxGrayValue / ACTUAL_MAX_GREY_LEVEL;
+            }
+        }
 
         public bool HasValidMetadata
         {

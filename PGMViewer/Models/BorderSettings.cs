@@ -2,8 +2,8 @@
 {
     public class BorderSettings
     {
+        private const byte MAX_GREY_LEVEL = 255;
         private byte _greyLevel;
-        private uint _width;
 
         public byte GreyLevel
         {
@@ -12,8 +12,8 @@
             {
                 if (value < 0)
                     _greyLevel = 0;
-                else if (value > 255)
-                    _greyLevel = 255;
+                else if (value > MAX_GREY_LEVEL)
+                    _greyLevel = MAX_GREY_LEVEL;
                 else
                     _greyLevel = value;
             }

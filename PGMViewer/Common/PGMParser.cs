@@ -97,7 +97,11 @@ namespace PGMViewer.Common
 
                         for (int i = 0; i < pixelValues.Length; i++)
                         {
-                            pixelData[totalPixelsReadSoFar + i] = pixelValues[i];
+                            // prevents byte overflow
+                            double tempResult = pgm.GreyLevelScale * pixelValues[i];
+                            byte pixel = tempResult > 255 ? (byte) 255 : (byte) tempResult;
+
+                            pixelData[totalPixelsReadSoFar + i] = pixel;
                         }
 
                         totalPixelsReadSoFar += pixelValues.Length;
