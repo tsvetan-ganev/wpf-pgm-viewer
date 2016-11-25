@@ -10,6 +10,8 @@ namespace PGMViewer.Models
 
         private uint _maxGrayValue;
 
+        public string Name { get; set; }
+
         public string MagicNumber { get; set; }
 
         public uint Width { get; set; }

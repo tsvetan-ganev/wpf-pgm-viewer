@@ -38,6 +38,7 @@ namespace PGMViewer.UI
                 try
                 {
                     _currentlyOpenedPGM = PGMParser.Parse(openFileDialog.FileName);
+                    _currentlyOpenedPGM.Name = openFileDialog.SafeFileName;
                     renderedImage.Source = _currentlyOpenedPGM.ToBitmapSource();
                     _UpdateMenuItemsClickableStatus(areEnabled: true);
                 }
@@ -67,13 +68,20 @@ namespace PGMViewer.UI
 
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-            saveFileDialog.Filter = "Bitmap Picture|*.bmp|JPEG image|*.jpg|PNG image|*.png";
-
+            saveFileDialog.Filter = "PGM (P2)|*.pgm|Bitmap Picture|*.bmp|JPEG image|*.jpg|PNG image|*.png";
 
             if (saveFileDialog.ShowDialog() == true)
             {
                 using (var fileStream = new FileStream(saveFileDialog.FileName, FileMode.Create))
                 {
+                    // PGM files are plain text, so there is no need for bitmap encoders
+                    if (saveFileDialog.FileName.EndsWith(".pgm"))
+                    {
+                        PGMFileWriter.Save(fileStream, _currentlyOpenedPGM);
+                        return;
+                    }
+
+                    // JPEG, PNG and BMP need a bitmap encoder
                     BitmapEncoder encoder = null;
 
                     if (saveFileDialog.FileName.EndsWith(".jpg"))

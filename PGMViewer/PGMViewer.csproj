@@ -64,6 +64,7 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="Common\BorderPainter.cs" />
+    <Compile Include="Common\PGMFileWriter.cs" />
     <Compile Include="Models\BorderSettings.cs" />
     <Compile Include="UI\AddBorderDialog.xaml.cs">
       <DependentUpon>AddBorderDialog.xaml</DependentUpon>
@@ -96,7 +97,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="UI\App.config" />
+    <None Include="UI\App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\cancel.png" />
