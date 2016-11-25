@@ -5,34 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PGMViewer.UI"
         mc:Ignorable="d"
+        ResizeMode="NoResize"
+        SizeToContent="Height"
         Title="PGM Viewer" Height="350" Width="525">
-    <Grid>
-        <DockPanel>
-            <Menu Name="menubar" DockPanel.Dock="Top">
-                <MenuItem Header="_File">
-                    <MenuItem Name="openMenuItem" Header="_Open" Click="OnOpenFile_Click">
-                        <MenuItem.Icon>
-                            <Image Source="/PGMViewer;component/Icons/folder_explore.png"></Image>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Name="saveMenuItem" Header="_Save" Click="OnSaveFile_Click">
-                        <MenuItem.Icon>
-                            <Image Source="/PGMViewer;component/Icons/disk.png"></Image>
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Name="closeMenuItem" Header="_Close" Click="OnCloseFile_Click">
-                        <MenuItem.Icon>
-                            <Image Source="/PGMViewer;component/Icons/cancel.png"></Image>
-                        </MenuItem.Icon>
-                    </MenuItem>
+    <StackPanel>
+        <Menu Name="menubar" DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Name="openMenuItem" Header="_Open" Click="OnOpenFile_Click">
+                    <MenuItem.Icon>
+                        <Image Source="/PGMViewer;component/Icons/folder_explore.png"></Image>
+                    </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="_Effects">
-                    <MenuItem Name="borderMenuItem" Header="Add _border" Click="onAddBorder_Click"></MenuItem>
+                <MenuItem Name="saveMenuItem" Header="_Save" Click="OnSaveFile_Click">
+                    <MenuItem.Icon>
+                        <Image Source="/PGMViewer;component/Icons/disk.png"></Image>
+                    </MenuItem.Icon>
                 </MenuItem>
-            </Menu>
-            <StackPanel>
-                <Image Name="renderedImage"></Image>
-            </StackPanel>
-        </DockPanel>
-    </Grid>
+                <MenuItem Name="closeMenuItem" Header="_Close" Click="OnCloseFile_Click">
+                    <MenuItem.Icon>
+                        <Image Source="/PGMViewer;component/Icons/cancel.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Effects">
+                <MenuItem Name="borderMenuItem" Header="Add _border" Click="onAddBorder_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <WrapPanel>
+            <Image Name="renderedImage"></Image>
+        </WrapPanel>
+    </StackPanel>
 </Window>
