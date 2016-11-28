@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Windows;
-using System.Windows.Media.Imaging;
 using Microsoft.Win32;
 using PGMViewer.Common;
 using PGMViewer.Models;
@@ -72,34 +71,7 @@ namespace PGMViewer.UI
 
             if (saveFileDialog.ShowDialog() == true)
             {
-                using (var fileStream = new FileStream(saveFileDialog.FileName, FileMode.Create))
-                {
-                    // PGM files are plain text, so there is no need for bitmap encoders
-                    if (saveFileDialog.FileName.EndsWith(".pgm"))
-                    {
-                        PGMFileWriter.Save(fileStream, _currentlyOpenedPGM);
-                        return;
-                    }
-
-                    // JPEG, PNG and BMP need a bitmap encoder
-                    BitmapEncoder encoder = null;
-
-                    if (saveFileDialog.FileName.EndsWith(".jpg"))
-                    {
-                        encoder = new JpegBitmapEncoder();
-                    }
-                    else if (saveFileDialog.FileName.EndsWith(".png"))
-                    {
-                        encoder = new PngBitmapEncoder();
-                    }
-                    else
-                    {
-                        encoder = new BmpBitmapEncoder();
-                    }
-
-                    encoder.Frames.Add(BitmapFrame.Create(_currentlyOpenedPGM.ToBitmapSource()));
-                    encoder.Save(fileStream);
-                }
+                _currentlyOpenedPGM.Save(saveFileDialog.FileName);
             }
         }
 

@@ -64,7 +64,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="Common\BorderPainter.cs" />
-    <Compile Include="Common\PGMFileWriter.cs" />
     <Compile Include="Models\BorderSettings.cs" />
     <Compile Include="UI\AddBorderDialog.xaml.cs">
       <DependentUpon>AddBorderDialog.xaml</DependentUpon>
