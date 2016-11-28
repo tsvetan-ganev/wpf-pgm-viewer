@@ -28,7 +28,7 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="_Effects">
-                <MenuItem Name="borderMenuItem" Header="Add _border" Click="onAddBorder_Click"></MenuItem>
+                <MenuItem Name="borderMenuItem" Header="Add _border" Click="OnAddBorder_Click"></MenuItem>
             </MenuItem>
         </Menu>
         <WrapPanel>

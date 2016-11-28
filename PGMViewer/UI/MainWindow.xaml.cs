@@ -75,7 +75,7 @@ namespace PGMViewer.UI
             }
         }
 
-        private void onAddBorder_Click(object sender, RoutedEventArgs e)
+        private void OnAddBorder_Click(object sender, RoutedEventArgs e)
         {
             var addBorderDialog = new AddBorderDialog();
             if (addBorderDialog.ShowDialog() == true)
