@@ -5,10 +5,13 @@ namespace PGMViewer.UI
 {
     public partial class AddBorderDialog : Window
     {
-        public AddBorderDialog()
+        public AddBorderDialog(uint imageWidth)
         {
+            this.MaxBorderWidth = imageWidth / 2;
             InitializeComponent();
         }
+
+        public uint MaxBorderWidth { get; set; }
 
         public BorderSettings BorderSettings { get; set; }
 

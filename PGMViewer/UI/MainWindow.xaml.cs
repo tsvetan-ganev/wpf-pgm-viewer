@@ -77,7 +77,7 @@ namespace PGMViewer.UI
 
         private void OnAddBorder_Click(object sender, RoutedEventArgs e)
         {
-            var addBorderDialog = new AddBorderDialog();
+            var addBorderDialog = new AddBorderDialog(_currentlyOpenedPGM.Width);
             if (addBorderDialog.ShowDialog() == true)
             {
                 _currentlyOpenedPGM.PixelData = BorderPainter.AddBorder(

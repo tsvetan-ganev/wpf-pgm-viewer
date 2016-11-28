@@ -5,22 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PGMViewer.UI"
         mc:Ignorable="d"
-        Title="Add border" Height="300" Width="300">
-    <Grid>
-        <StackPanel>
-            <TextBlock Text="{Binding ElementName=borderWidthSlider, Path=Value, StringFormat=Border width: {0} px}" />
-            <Slider Name="borderWidthSlider"
-                    Value="0" Maximum="255"
-                    IsSnapToTickEnabled="True"
-            />
+        x:Name="addBorderDialog"
+        ResizeMode="NoResize"
+        Title="Add border" Height="200" Width="300">
+  <Border Padding="10">
+    <StackPanel VerticalAlignment="Center">
+      <TextBlock Text="{Binding ElementName=borderWidthSlider, Path=Value, StringFormat=Border width: {0} px}" />
+      <Slider Name="borderWidthSlider"
+                Value="0" 
+                Maximum="{Binding ElementName=addBorderDialog, Path=MaxBorderWidth}"
+                IsSnapToTickEnabled="True"
+       />
 
-            <TextBlock Text="{Binding ElementName=greyLevelSlider, Path=Value, StringFormat=Grey level: {0}}" />
-            <Slider Name="greyLevelSlider"
-                    Value="0" Maximum="255"
-                    IsSnapToTickEnabled="True"
-            />
+      <TextBlock Text="{Binding ElementName=greyLevelSlider, Path=Value, StringFormat=Grey level: {0}}" />
+      <Slider Name="greyLevelSlider"
+                Value="0" Maximum="255"
+                IsSnapToTickEnabled="True"
+       />
 
-            <Button Click="ApplyButton_Click">Apply</Button>
-        </StackPanel>
-    </Grid>
+      <Button Click="ApplyButton_Click" Margin="0 20 0 0">Apply</Button>
+    </StackPanel>
+  </Border>
 </Window>
