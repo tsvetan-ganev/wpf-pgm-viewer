@@ -119,6 +119,11 @@ namespace PGMViewer.Models
                         pixelLine += currentPixel;
                     }
                 }
+
+                if (pixelLine.Length > 0)
+                {
+                    writer.WriteLine(pixelLine);
+                }
             }
         }
 
